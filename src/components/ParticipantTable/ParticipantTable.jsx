@@ -1,0 +1,70 @@
+import { Link } from 'react-router-dom'
+import Badge from '@/components/ui/Badge/Badge'
+import { formatCRC, formatDate } from '@/utils/format'
+import styles from './ParticipantTable.module.css'
+
+const statusConfig = {
+  pending: { label: 'Pendiente', variant: 'danger' },
+  partial: { label: 'Parcial',   variant: 'warning' },
+  paid:    { label: 'Pagado',    variant: 'success' },
+}
+
+export default function ParticipantTable({ participants = [], showLink = true }) {
+  if (participants.length === 0) {
+    return (
+      <div className={styles.empty}>
+        No hay participantes registrados aún.
+      </div>
+    )
+  }
+
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.tableScroll}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th className={styles.right}>Monto</th>
+              <th>Estado</th>
+              <th>Fecha de pago</th>
+              <th>Método</th>
+              {showLink && <th />}
+            </tr>
+          </thead>
+          <tbody>
+            {participants.map((p) => {
+              const status = statusConfig[p.payment_status] ?? statusConfig.pending
+              return (
+                <tr key={p.id} className={styles.row}>
+                  <td className={styles.name}>{p.name}</td>
+                  <td className={`${styles.amount} ${styles.right}`}>
+                    {formatCRC(p.amount_owed)}
+                  </td>
+                  <td>
+                    <Badge variant={status.variant}>{status.label}</Badge>
+                  </td>
+                  <td className={styles.secondary}>
+                    {p.payment_date ? formatDate(p.payment_date) : '—'}
+                  </td>
+                  <td className={styles.secondary}>{p.payment_method ?? '—'}</td>
+                  {showLink && (
+                    <td>
+                      <Link
+                        to={`/pago/${p.payment_token}`}
+                        className={styles.link}
+                        title="Ver enlace personal"
+                      >
+                        Ver →
+                      </Link>
+                    </td>
+                  )}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
