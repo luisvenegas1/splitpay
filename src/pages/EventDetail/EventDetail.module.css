@@ -283,6 +283,18 @@
   text-decoration: underline;
 }
 
+/* Hide less critical columns on mobile */
+@media (max-width: 640px) {
+  .colHideMobile {
+    display: none;
+  }
+
+  .itemsTable .table th,
+  .itemsTable .table td {
+    padding: var(--space-2) var(--space-3);
+  }
+}
+
 /* Responsive — desktop layout */
 @media (min-width: 900px) {
   .grid {

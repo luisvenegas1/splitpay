@@ -93,3 +93,23 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
 }
+
+@media (max-width: 640px) {
+  .wrapper {
+    overflow: visible;
+  }
+
+  .tableScroll {
+    overflow-x: visible;
+  }
+
+  .colDate,
+  .colMethod {
+    display: none;
+  }
+
+  .table th,
+  .table td {
+    padding: var(--space-3) var(--space-2);
+  }
+}

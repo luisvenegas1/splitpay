@@ -27,8 +27,8 @@ export default function ParticipantTable({ participants = [], showLink = true })
               <th>Nombre</th>
               <th className={styles.right}>Monto</th>
               <th>Estado</th>
-              <th>Fecha de pago</th>
-              <th>Método</th>
+              <th className={styles.colDate}>Fecha de pago</th>
+              <th className={styles.colMethod}>Método</th>
               {showLink && <th />}
             </tr>
           </thead>
@@ -44,10 +44,10 @@ export default function ParticipantTable({ participants = [], showLink = true })
                   <td>
                     <Badge variant={status.variant}>{status.label}</Badge>
                   </td>
-                  <td className={styles.secondary}>
+                  <td className={`${styles.secondary} ${styles.colDate}`}>
                     {p.payment_date ? formatDate(p.payment_date) : '—'}
                   </td>
-                  <td className={styles.secondary}>{p.payment_method ?? '—'}</td>
+                  <td className={`${styles.secondary} ${styles.colMethod}`}>{p.payment_method ?? '—'}</td>
                   {showLink && (
                     <td>
                       <Link

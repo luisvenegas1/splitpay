@@ -110,7 +110,7 @@ export default function EventDetail() {
                         <tr>
                           <th>Descripción</th>
                           <th className={styles.right}>Cant.</th>
-                          <th className={styles.right}>Precio unit.</th>
+                          <th className={`${styles.right} ${styles.colHideMobile}`}>Precio unit.</th>
                           <th className={styles.right}>Con IV</th>
                         </tr>
                       </thead>
@@ -119,7 +119,7 @@ export default function EventDetail() {
                           <tr key={item.id}>
                             <td>{item.description}</td>
                             <td className={styles.right}>{item.quantity}</td>
-                            <td className={styles.right}>{formatCRC(item.unit_price)}</td>
+                            <td className={`${styles.right} ${styles.colHideMobile}`}>{formatCRC(item.unit_price)}</td>
                             <td className={`${styles.right} ${styles.bold}`}>
                               {formatCRC(item.price_with_iv)}
                             </td>
