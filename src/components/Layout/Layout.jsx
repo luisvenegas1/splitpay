@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar/Navbar'
+import { InstallLink } from '@/components/InstallModal/InstallModal'
 import styles from './Layout.module.css'
 
 const VERSION = '1.0.0'
@@ -21,6 +22,8 @@ export default function Layout({ children }) {
         </span>
         <span className={styles.sep}>·</span>
         <span className={styles.version}>v{VERSION}</span>
+        <span className={styles.sep}>·</span>
+        <InstallLink />
       </footer>
     </div>
   )
