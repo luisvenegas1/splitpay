@@ -35,6 +35,11 @@ export default function Home() {
               Ya tengo cuenta →
             </Link>
           </div>
+
+          <p className={styles.accountNote}>
+            🔐 Necesitás una cuenta para crear y gestionar eventos.
+            Los participantes pueden ver y pagar sin registrarse.
+          </p>
         </div>
       </section>
 

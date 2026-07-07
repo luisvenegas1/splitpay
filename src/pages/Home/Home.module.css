@@ -54,6 +54,13 @@
 }
 .loginLink:hover { color: var(--color-accent); }
 
+.accountNote {
+  margin-top: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+  line-height: var(--leading-normal);
+}
+
 /* Features section */
 .features {
   padding-bottom: var(--space-20);

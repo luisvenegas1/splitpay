@@ -157,8 +157,12 @@ export default function EventDetail() {
             </div>
 
             <InvoiceViewer invoices={event.invoices ?? []} />
-            <Calculator />
           </aside>
+
+          {/* Calculadora — siempre al final en móvil */}
+          <div className={styles.calcWrapper}>
+            <Calculator />
+          </div>
 
         </div>
       </div>

@@ -295,23 +295,46 @@
   }
 }
 
+/* Calculadora — siempre al final en móvil */
+.calcWrapper {
+  min-width: 0;
+}
+
 /* Responsive — desktop layout */
 @media (min-width: 900px) {
   .grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 320px;
-    flex-direction: unset;
+    grid-template-rows: auto auto;
+    align-items: start;
+  }
+
+  .main {
+    grid-column: 1;
+    grid-row: 1 / 3;
   }
 
   .aside {
+    grid-column: 2;
+    grid-row: 1;
     position: sticky;
     top: calc(60px + var(--space-6));
+  }
+
+  .calcWrapper {
+    grid-column: 2;
+    grid-row: 2;
   }
 }
 
 @media (max-width: 899px) {
+  /* main primero, aside (progreso + impuestos) después, calculadora al final */
   .aside {
-    order: -1;
+    order: 10;
+  }
+
+  .calcWrapper {
+    order: 20;
   }
 
   .headerTop {
