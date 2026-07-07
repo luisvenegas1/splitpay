@@ -116,27 +116,25 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Content grid */
+/* Content grid — mobile first */
 .grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px;
+  display: flex;
+  flex-direction: column;
   gap: var(--space-6);
-  align-items: start;
-  max-width: 100%;
 }
 
 .main {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
+  min-width: 0;
 }
 
 .aside {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  position: sticky;
-  top: calc(60px + var(--space-6));
+  min-width: 0;
 }
 
 /* Sections */
@@ -285,14 +283,22 @@
   text-decoration: underline;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
+/* Responsive — desktop layout */
+@media (min-width: 900px) {
   .grid {
-    grid-template-columns: minmax(0, 1fr);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    flex-direction: unset;
   }
 
   .aside {
-    position: static;
+    position: sticky;
+    top: calc(60px + var(--space-6));
+  }
+}
+
+@media (max-width: 899px) {
+  .aside {
     order: -1;
   }
 
@@ -302,15 +308,5 @@
 
   .totalBox {
     align-items: flex-start;
-  }
-}
-
-@media (max-width: 640px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page {
-    padding-top: var(--space-6);
   }
 }
