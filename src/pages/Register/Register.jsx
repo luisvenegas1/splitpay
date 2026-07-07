@@ -8,13 +8,15 @@ export default function Register() {
   const { user, signUp } = useAuth()
   const navigate = useNavigate()
 
-  const [name, setName]         = useState('')
-  const [phone, setPhone]       = useState('')
-  const [email, setEmail]       = useState('')
-  const [password, setPassword] = useState('')
-  const [confirm, setConfirm]   = useState('')
-  const [error, setError]       = useState('')
-  const [loading, setLoading]   = useState(false)
+  const [name, setName]             = useState('')
+  const [phone, setPhone]           = useState('')
+  const [email, setEmail]           = useState('')
+  const [password, setPassword]     = useState('')
+  const [confirm, setConfirm]       = useState('')
+  const [showPwd, setShowPwd]       = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
+  const [error, setError]           = useState('')
+  const [loading, setLoading]       = useState(false)
 
   if (user) return <Navigate to="/dashboard" replace />
 
@@ -91,30 +93,52 @@ export default function Register() {
 
           <div className={styles.field}>
             <label htmlFor="password" className={styles.label}>Contraseña *</label>
-            <input
-              id="password"
-              type="password"
-              className={styles.input}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Mínimo 6 caracteres"
-              required
-              autoComplete="new-password"
-            />
+            <div className={styles.passwordWrap}>
+              <input
+                id="password"
+                type={showPwd ? 'text' : 'password'}
+                className={styles.input}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Mínimo 6 caracteres"
+                required
+                autoComplete="new-password"
+              />
+              <button
+                type="button"
+                className={styles.eyeBtn}
+                onClick={() => setShowPwd((v) => !v)}
+                tabIndex={-1}
+                aria-label={showPwd ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+              >
+                {showPwd ? '🙈' : '👁️'}
+              </button>
+            </div>
           </div>
 
           <div className={styles.field}>
             <label htmlFor="confirm" className={styles.label}>Confirmar contraseña *</label>
-            <input
-              id="confirm"
-              type="password"
-              className={styles.input}
-              value={confirm}
-              onChange={(e) => setConfirm(e.target.value)}
-              placeholder="Repetir contraseña"
-              required
-              autoComplete="new-password"
-            />
+            <div className={styles.passwordWrap}>
+              <input
+                id="confirm"
+                type={showConfirm ? 'text' : 'password'}
+                className={styles.input}
+                value={confirm}
+                onChange={(e) => setConfirm(e.target.value)}
+                placeholder="Repetir contraseña"
+                required
+                autoComplete="new-password"
+              />
+              <button
+                type="button"
+                className={styles.eyeBtn}
+                onClick={() => setShowConfirm((v) => !v)}
+                tabIndex={-1}
+                aria-label={showConfirm ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+              >
+                {showConfirm ? '🙈' : '👁️'}
+              </button>
+            </div>
           </div>
 
           {error && <p className={styles.error}>{error}</p>}

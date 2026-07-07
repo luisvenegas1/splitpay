@@ -7,12 +7,12 @@ import styles from './Login.module.css'
 export default function Login() {
   const { user, signIn } = useAuth()
   const navigate = useNavigate()
-  const [email, setEmail] = useState('')
+  const [email, setEmail]       = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [showPwd, setShowPwd]   = useState(false)
+  const [error, setError]       = useState('')
+  const [loading, setLoading]   = useState(false)
 
-  // Si ya está autenticado, redirigir al dashboard
   if (user) return <Navigate to="/dashboard" replace />
 
   async function handleSubmit(e) {
@@ -58,16 +58,33 @@ export default function Login() {
 
           <div className={styles.field}>
             <label htmlFor="password" className={styles.label}>Contraseña</label>
-            <input
-              id="password"
-              type="password"
-              className={styles.input}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-              required
-              autoComplete="current-password"
-            />
+            <div className={styles.passwordWrap}>
+              <input
+                id="password"
+                type={showPwd ? 'text' : 'password'}
+                className={styles.input}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                required
+                autoComplete="current-password"
+              />
+              <button
+                type="button"
+                className={styles.eyeBtn}
+                onClick={() => setShowPwd((v) => !v)}
+                tabIndex={-1}
+                aria-label={showPwd ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+              >
+                {showPwd ? '🙈' : '👁️'}
+              </button>
+            </div>
+          </div>
+
+          <div className={styles.forgotRow}>
+            <Link to="/olvide-contrasena" className={styles.forgotLink}>
+              ¿Olvidaste tu contraseña?
+            </Link>
           </div>
 
           {error && <p className={styles.error}>{error}</p>}
