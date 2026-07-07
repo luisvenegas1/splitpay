@@ -119,9 +119,10 @@
 /* Content grid */
 .grid {
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: minmax(0, 1fr) 320px;
   gap: var(--space-6);
   align-items: start;
+  max-width: 100%;
 }
 
 .main {
@@ -287,7 +288,7 @@
 /* Responsive */
 @media (max-width: 900px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .aside {
@@ -301,5 +302,15 @@
 
   .totalBox {
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page {
+    padding-top: var(--space-6);
   }
 }
