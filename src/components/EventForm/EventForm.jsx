@@ -384,23 +384,11 @@ export default function EventForm({ event, onSuccess, onCancel }) {
         <div className={styles.field}>
           <label className={styles.label}>Factura (imagen)</label>
           <div className={styles.invoiceRow}>
-            {/* Elegir archivo existente */}
             <label className={styles.fileBtn}>
-              📁 Elegir archivo
+              📁 Elegir / tomar foto
               <input
                 type="file"
                 accept="image/*"
-                style={{ display: 'none' }}
-                onChange={(e) => { setInvoiceFile(e.target.files[0] ?? null); setParseResult(null) }}
-              />
-            </label>
-            {/* Tomar foto con cámara (Continuity Camera en Mac, cámara directa en móvil) */}
-            <label className={styles.fileBtn}>
-              📷 Tomar foto
-              <input
-                type="file"
-                accept="image/*"
-                capture="environment"
                 style={{ display: 'none' }}
                 onChange={(e) => { setInvoiceFile(e.target.files[0] ?? null); setParseResult(null) }}
               />
