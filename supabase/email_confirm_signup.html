@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recuperá tu contraseña — SplitPay</title>
+  <title>Bienvenido a SplitPay</title>
 </head>
 <body style="margin:0;padding:0;background:#f0f0f5;font-family:'Segoe UI',Helvetica,Arial,sans-serif;">
 
@@ -12,7 +12,7 @@
       <td align="center">
         <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;">
 
-          <!-- Logo area -->
+          <!-- Logo -->
           <tr>
             <td align="center" style="padding-bottom:24px;">
               <img src="https://splitpay-blond.vercel.app/email-logo.png"
@@ -39,38 +39,84 @@
 
                     <!-- Title -->
                     <h1 style="margin:0 0 8px;font-size:24px;font-weight:800;color:#111827;letter-spacing:-0.5px;">
-                      Recuperá tu contraseña 👋
+                      ¡Bienvenido a SplitPay! 🎉
                     </h1>
 
                     <!-- Body -->
-                    <p style="margin:0 0 8px;font-size:15px;color:#4b5563;line-height:1.7;">
-                      Hola,
-                    </p>
-                    <p style="margin:0 0 28px;font-size:15px;color:#4b5563;line-height:1.7;">
-                      Recibimos una solicitud para restablecer la contraseña de tu cuenta en <strong style="color:#111827;">SplitPay</strong>.
-                      Hacé clic en el botón para crear una nueva contraseña.
+                    <p style="margin:0 0 24px;font-size:15px;color:#4b5563;line-height:1.7;">
+                      Tu cuenta está casi lista. Solo confirmá tu correo electrónico para activarla.
                     </p>
 
                     <!-- CTA Button -->
-                    <table cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
+                    <table cellpadding="0" cellspacing="0" style="margin-bottom:36px;">
                       <tr>
                         <td style="border-radius:12px;background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 4px 14px rgba(34,197,94,0.35);">
                           <a href="{{ .ConfirmationURL }}"
                              style="display:inline-block;padding:14px 36px;font-size:15px;font-weight:700;color:#ffffff;text-decoration:none;letter-spacing:0.2px;border-radius:12px;">
-                            Restablecer contraseña →
+                            Confirmar mi cuenta →
                           </a>
                         </td>
                       </tr>
                     </table>
 
-                    <!-- Security note -->
-                    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+                    <!-- What is SplitPay -->
+                    <p style="margin:0 0 12px;font-size:13px;font-weight:700;color:#374151;text-transform:uppercase;letter-spacing:0.6px;">
+                      ¿Qué podés hacer con SplitPay?
+                    </p>
+
+                    <!-- Feature 1 -->
+                    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:10px;">
                       <tr>
-                        <td style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:16px 20px;">
-                          <p style="margin:0;font-size:13px;color:#6b7280;line-height:1.6;">
-                            ⏱ Este enlace expira en <strong style="color:#374151;">1 hora</strong>.<br/>
-                            🔒 Si no solicitaste este cambio, podés ignorar este correo de forma segura.
-                          </p>
+                        <td style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;">
+                          <table cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td style="font-size:20px;padding-right:12px;vertical-align:top;">🧾</td>
+                              <td>
+                                <p style="margin:0;font-size:14px;font-weight:700;color:#111827;">Cargá la factura</p>
+                                <p style="margin:4px 0 0;font-size:13px;color:#6b7280;line-height:1.5;">
+                                  Ingresá los ítems y asignálos a cada persona según lo que consumió.
+                                </p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Feature 2 -->
+                    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:10px;">
+                      <tr>
+                        <td style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;">
+                          <table cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td style="font-size:20px;padding-right:12px;vertical-align:top;">🔗</td>
+                              <td>
+                                <p style="margin:0;font-size:14px;font-weight:700;color:#111827;">Compartí el link</p>
+                                <p style="margin:4px 0 0;font-size:13px;color:#6b7280;line-height:1.5;">
+                                  Cada participante recibe su propio link con el monto exacto que debe. Sin que tengan que crearse cuenta.
+                                </p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Feature 3 -->
+                    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
+                      <tr>
+                        <td style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;">
+                          <table cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td style="font-size:20px;padding-right:12px;vertical-align:top;">✅</td>
+                              <td>
+                                <p style="margin:0;font-size:14px;font-weight:700;color:#111827;">Confirmá los pagos</p>
+                                <p style="margin:4px 0 0;font-size:13px;color:#6b7280;line-height:1.5;">
+                                  Los participantes registran su pago y vos aprobás desde el dashboard. El evento se cierra solo cuando todos pagan.
+                                </p>
+                              </td>
+                            </tr>
+                          </table>
                         </td>
                       </tr>
                     </table>
@@ -93,7 +139,7 @@
                       <tr>
                         <td style="vertical-align:middle;">
                           <p style="margin:0;font-size:13px;color:#4b5563;line-height:1.6;">
-                            ¡Saludos!<br/>
+                            ¡Nos alegra tenerte!<br/>
                             <strong style="color:#111827;">El equipo de SplitPay</strong>
                           </p>
                         </td>
