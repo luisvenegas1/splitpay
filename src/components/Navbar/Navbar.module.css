@@ -22,16 +22,10 @@
   text-decoration: none;
 }
 
-.logoIcon {
-  font-size: var(--text-xl);
-  line-height: 1;
-}
-
-.logoText {
-  font-size: var(--text-lg);
-  font-weight: var(--font-bold);
-  color: var(--color-text-primary);
-  letter-spacing: -0.02em;
+.logoImg {
+  height: 32px;
+  width: auto;
+  display: block;
 }
 
 .actions {

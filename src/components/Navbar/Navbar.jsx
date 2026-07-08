@@ -18,8 +18,7 @@ export default function Navbar() {
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
         <Link to="/" className={styles.logo}>
-          <span className={styles.logoIcon}>⚡</span>
-          <span className={styles.logoText}>SplitPay</span>
+          <img src="/logo.svg" alt="SplitPay" className={styles.logoImg} />
         </Link>
 
         <div className={styles.actions}>

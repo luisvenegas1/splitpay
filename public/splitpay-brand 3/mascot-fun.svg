@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 880">
+<defs>
+<clipPath id="billf">
+  <path d="M 355,205 C 450,238 550,250 650,250 C 750,250 850,238 945,205 C 960,305 958,420 940,530 C 845,562 750,574 650,574 C 550,574 455,562 360,530 C 342,420 340,305 355,205 Z"/>
+</clipPath>
+</defs>
+
+<!-- sombra -->
+<ellipse cx="600" cy="800" rx="420" ry="34" fill="#DDD8EE"/>
+
+<!-- pierna lejana -->
+<path d="M 655,680 C 615,722 565,754 510,776" stroke="#232347" stroke-width="34" stroke-linecap="round" fill="none"/>
+<path d="M 655,680 C 635,701 613,720 588,737" stroke="#232347" stroke-width="44" stroke-linecap="round" fill="none"/>
+<g transform="translate(205,62) rotate(-12 309 727)">
+  <path d="M 216,751 C 206,721 228,699 264,703 C 280,683 318,681 338,697 L 370,705 C 390,712 400,727 400,745 L 400,755 C 400,765 390,771 378,771 L 236,771 C 222,771 218,763 216,751 Z" fill="#FFFFFF" stroke="#232347" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M 214,768 L 402,768" stroke="#232347" stroke-width="17" stroke-linecap="round"/>
+  <path d="M 332,699 C 342,715 342,733 332,749" stroke="#232347" stroke-width="9" stroke-linecap="round" fill="none"/>
+</g>
+<!-- pierna cercana -->
+<path d="M 555,672 C 510,706 460,732 405,750" stroke="#232347" stroke-width="34" stroke-linecap="round" fill="none"/>
+<path d="M 555,672 C 533,690 509,706 483,720" stroke="#232347" stroke-width="44" stroke-linecap="round" fill="none"/>
+<g transform="translate(95,26) rotate(-18 309 727)">
+  <path d="M 216,751 C 206,721 228,699 264,703 C 280,683 318,681 338,697 L 370,705 C 390,712 400,727 400,745 L 400,755 C 400,765 390,771 378,771 L 236,771 C 222,771 218,763 216,751 Z" fill="#FFFFFF" stroke="#232347" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M 214,768 L 402,768" stroke="#232347" stroke-width="17" stroke-linecap="round"/>
+  <path d="M 332,699 C 342,715 342,733 332,749" stroke="#232347" stroke-width="9" stroke-linecap="round" fill="none"/>
+</g>
+
+<!-- brazo izquierdo hacia el vaso -->
+<path d="M 385,540 C 348,568 322,600 306,636" stroke="#232347" stroke-width="34" stroke-linecap="round" fill="none"/>
+<path d="M 385,540 C 366,554 350,570 336,588" stroke="#232347" stroke-width="46" stroke-linecap="round" fill="none"/>
+<!-- brazo derecho -->
+<path d="M 918,550 C 962,574 994,606 1014,646" stroke="#232347" stroke-width="34" stroke-linecap="round" fill="none"/>
+<path d="M 918,550 C 940,562 960,578 976,596" stroke="#232347" stroke-width="46" stroke-linecap="round" fill="none"/>
+
+<!-- vaso morado con pajilla -->
+<g>
+  <path d="M 205,620 L 320,620 L 306,758 C 304,772 222,772 220,758 Z" fill="#8B5CF6" stroke="#232347" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M 218,660 L 308,660" stroke="#7C48E0" stroke-width="10" stroke-linecap="round"/>
+  <ellipse cx="262" cy="620" rx="58" ry="14" fill="#A78BFA" stroke="#232347" stroke-width="10"/>
+  <path d="M 270,612 L 304,522" stroke="#232347" stroke-width="20" stroke-linecap="round"/>
+  <path d="M 270,612 L 304,522" stroke="#C4B5FD" stroke-width="10" stroke-linecap="round"/>
+</g>
+<!-- guante sobre el vaso -->
+<g>
+  <path d="M 306,612 C 288,606 272,614 268,630 C 264,650 278,668 304,674 C 330,680 352,670 358,652 C 364,634 354,618 336,612 C 326,609 315,609 306,612 Z" fill="#FFFFFF" stroke="#232347" stroke-width="13" stroke-linejoin="round"/>
+  <rect x="278" y="620" width="28" height="40" rx="14" fill="#FFFFFF" stroke="#232347" stroke-width="9" transform="rotate(-10 292 640)"/>
+  <rect x="300" y="628" width="28" height="42" rx="14" fill="#FFFFFF" stroke="#232347" stroke-width="9" transform="rotate(-6 314 649)"/>
+</g>
+
+<!-- guante pulgar arriba -->
+<g>
+  <g transform="rotate(-18 1030 640)">
+    <rect x="1012" y="562" width="34" height="72" rx="17" fill="#FFFFFF" stroke="#232347" stroke-width="11"/>
+  </g>
+  <path d="M 1005,625 C 985,628 972,643 975,662 C 978,684 1000,700 1030,702 C 1060,704 1084,690 1089,668 C 1094,647 1082,628 1060,622 C 1040,616 1020,619 1005,625 Z" fill="#FFFFFF" stroke="#232347" stroke-width="13" stroke-linejoin="round"/>
+  <path d="M 992,660 C 1002,656 1013,658 1021,664" stroke="#232347" stroke-width="9" stroke-linecap="round" fill="none"/>
+</g>
+
+<!-- billete sentado, inclinado -->
+<g transform="translate(0,92) rotate(-7 650 400)">
+<path d="M 355,205 C 450,238 550,250 650,250 C 750,250 850,238 945,205 C 960,305 958,420 940,530 C 845,562 750,574 650,574 C 550,574 455,562 360,530 C 342,420 340,305 355,205 Z" fill="#4E9B52" stroke="#232347" stroke-width="19" stroke-linejoin="round"/>
+<g clip-path="url(#billf)">
+  <path d="M 398,242 C 480,268 565,278 650,278 C 735,278 820,268 902,242 C 914,330 912,424 898,502 C 820,528 735,540 650,540 C 565,540 480,528 402,502 C 388,424 386,330 398,242 Z" fill="#74C476"/>
+  <path d="M 360,490 C 480,540 820,540 940,490 L 940,590 L 360,590 Z" fill="#448A48" opacity="0.45"/>
+  <ellipse cx="450" cy="320" rx="45" ry="24" fill="#95D795" opacity="0.8"/>
+  <ellipse cx="850" cy="330" rx="45" ry="24" fill="#95D795" opacity="0.8"/>
+  <ellipse cx="500" cy="500" rx="50" ry="22" fill="#95D795" opacity="0.7"/>
+  <ellipse cx="800" cy="505" rx="48" ry="20" fill="#95D795" opacity="0.7"/>
+  <circle cx="415" cy="278" r="16" fill="#3E9149"/>
+  <circle cx="885" cy="278" r="16" fill="#3E9149"/>
+  <circle cx="412" cy="492" r="16" fill="#3E9149"/>
+  <circle cx="888" cy="492" r="16" fill="#3E9149"/>
+  <path d="M 388,228 C 470,254 550,264 625,266" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" fill="none" opacity="0.9"/>
+
+  <!-- lentes de sol -->
+  <g>
+    <path d="M 430,306 C 428,290 440,278 458,276 L 570,270 C 590,269 604,280 605,296 L 608,340 C 609,360 594,376 572,378 L 486,382 C 462,383 444,370 440,348 Z" fill="#232347"/>
+    <path d="M 700,294 C 699,278 711,266 730,264 L 844,258 C 864,257 878,268 880,284 L 884,330 C 886,350 871,366 849,368 L 762,373 C 738,374 720,361 716,339 Z" fill="#232347"/>
+    <path d="M 605,300 C 640,292 668,290 700,292" stroke="#232347" stroke-width="16" stroke-linecap="round" fill="none"/>
+    <path d="M 462,290 C 490,284 520,282 548,284" stroke="#4A4A6A" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.9"/>
+    <path d="M 734,278 C 762,272 792,270 820,272" stroke="#4A4A6A" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.9"/>
+  </g>
+
+  <!-- boca sonriente -->
+  <path d="M 545,440 C 580,480 700,474 725,424 C 738,486 678,528 622,524 C 568,520 532,486 545,440 Z" fill="#232347"/>
+  <path d="M 557,448 C 590,472 690,466 712,434 L 703,460 C 668,484 585,484 568,464 Z" fill="#FFFFFF"/>
+  <path d="M 600,508 C 614,526 682,520 692,498 C 674,482 614,486 600,508 Z" fill="#C94F4F"/>
+</g>
+<!-- grieta blanca -->
+<path d="M 655,228 L 636,300 L 676,375 L 630,455 L 668,525 L 650,592" stroke="#FFFFFF" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</g>
+
+<!-- destellos -->
+<g stroke="#3DA35D" stroke-width="15" stroke-linecap="round">
+  <path d="M 1010,240 L 994,204"/>
+  <path d="M 1044,228 L 1044,184"/>
+  <path d="M 1078,240 L 1096,206"/>
+</g>
+</svg>

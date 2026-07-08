@@ -8,6 +8,18 @@
   margin: 0 auto;
 }
 
+.mascot {
+  width: 180px;
+  height: auto;
+  margin: 0 auto var(--space-4);
+  display: block;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.10));
+}
+
+@media (max-width: 640px) {
+  .mascot { width: 130px; }
+}
+
 .badge {
   display: inline-block;
   font-size: var(--text-xs);

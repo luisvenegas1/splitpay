@@ -18,6 +18,7 @@ export default function Home() {
     <Layout>
       <section className={styles.hero}>
         <div className={`${styles.heroInner} container`}>
+          <img src="/mascot.png" alt="SplitPay mascot" className={styles.mascot} />
           <div className={styles.badge}>✦ Cuentas compartidas</div>
           <h1 className={styles.title}>
             Pagá vos,<br />cobrales después.

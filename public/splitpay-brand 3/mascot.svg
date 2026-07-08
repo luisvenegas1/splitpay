@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780">
+<defs>
+<clipPath id="billc">
+  <path d="M 245,140 C 360,178 480,192 600,192 C 720,192 840,178 955,140 C 972,260 970,400 948,530 C 830,570 720,585 600,585 C 480,585 370,570 252,530 C 230,400 228,260 245,140 Z"/>
+</clipPath>
+</defs>
+
+<!-- sombra -->
+<ellipse cx="600" cy="712" rx="300" ry="26" fill="#DDD8EE"/>
+
+<!-- piernas -->
+<path d="M 468,562 C 462,590 456,614 452,642" stroke="#232347" stroke-width="32" stroke-linecap="round" fill="none"/>
+<path d="M 468,562 C 465,580 462,596 459,610" stroke="#232347" stroke-width="42" stroke-linecap="round" fill="none"/>
+<path d="M 732,562 C 738,590 744,614 748,642" stroke="#232347" stroke-width="32" stroke-linecap="round" fill="none"/>
+<path d="M 732,562 C 735,580 738,596 741,610" stroke="#232347" stroke-width="42" stroke-linecap="round" fill="none"/>
+
+<!-- tenis -->
+<g transform="translate(0,16) rotate(4 425 660)">
+  <path d="M 336,666 C 326,636 348,614 384,618 C 400,598 438,596 458,612 L 490,620 C 510,627 520,642 520,660 L 520,670 C 520,680 510,686 498,686 L 356,686 C 342,686 338,678 336,666 Z" fill="#FFFFFF" stroke="#232347" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M 334,683 L 522,683" stroke="#232347" stroke-width="17" stroke-linecap="round"/>
+  <path d="M 452,614 C 462,630 462,648 452,664" stroke="#232347" stroke-width="9" stroke-linecap="round" fill="none"/>
+</g>
+<g transform="translate(1200,16) scale(-1,1) rotate(4 425 660)">
+  <path d="M 336,666 C 326,636 348,614 384,618 C 400,598 438,596 458,612 L 490,620 C 510,627 520,642 520,660 L 520,670 C 520,680 510,686 498,686 L 356,686 C 342,686 338,678 336,666 Z" fill="#FFFFFF" stroke="#232347" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M 334,683 L 522,683" stroke="#232347" stroke-width="17" stroke-linecap="round"/>
+  <path d="M 452,614 C 462,630 462,648 452,664" stroke="#232347" stroke-width="9" stroke-linecap="round" fill="none"/>
+</g>
+
+<!-- brazos -->
+<path d="M 258,332 C 208,318 174,290 154,250" stroke="#232347" stroke-width="34" stroke-linecap="round" fill="none"/>
+<path d="M 258,332 C 234,325 214,315 197,302" stroke="#232347" stroke-width="46" stroke-linecap="round" fill="none"/>
+<path d="M 942,332 C 990,320 1022,326 1050,350" stroke="#232347" stroke-width="34" stroke-linecap="round" fill="none"/>
+<path d="M 942,332 C 964,326 984,325 1002,329" stroke="#232347" stroke-width="46" stroke-linecap="round" fill="none"/>
+
+<!-- billete: curvado hacia atras (esquinas superiores altas) -->
+<path d="M 245,140 C 360,178 480,192 600,192 C 720,192 840,178 955,140 C 972,260 970,400 948,530 C 830,570 720,585 600,585 C 480,585 370,570 252,530 C 230,400 228,260 245,140 Z" fill="#4E9B52" stroke="#232347" stroke-width="20" stroke-linejoin="round"/>
+
+<g clip-path="url(#billc)">
+  <!-- panel interno claro -->
+  <path d="M 298,185 C 400,216 500,228 600,228 C 700,228 800,216 902,185 C 916,290 914,405 896,500 C 800,532 700,545 600,545 C 500,545 400,532 304,500 C 286,405 284,290 298,185 Z" fill="#74C476"/>
+  <!-- sombra inferior interna -->
+  <path d="M 252,500 C 400,555 800,555 948,500 L 948,600 L 252,600 Z" fill="#448A48" opacity="0.45"/>
+  <!-- manchas -->
+  <ellipse cx="360" cy="290" rx="55" ry="30" fill="#95D795" opacity="0.8"/>
+  <ellipse cx="430" cy="495" rx="60" ry="26" fill="#95D795" opacity="0.7"/>
+  <ellipse cx="835" cy="300" rx="55" ry="30" fill="#95D795" opacity="0.8"/>
+  <ellipse cx="780" cy="500" rx="55" ry="24" fill="#95D795" opacity="0.7"/>
+  <ellipse cx="600" cy="245" rx="70" ry="22" fill="#95D795" opacity="0.6"/>
+  <!-- circulos esquina -->
+  <circle cx="320" cy="248" r="19" fill="#3E9149"/>
+  <circle cx="880" cy="248" r="19" fill="#3E9149"/>
+  <circle cx="316" cy="492" r="19" fill="#3E9149"/>
+  <circle cx="884" cy="492" r="19" fill="#3E9149"/>
+  <!-- brillos superiores -->
+  <path d="M 282,168 C 380,196 470,208 560,210" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <path d="M 648,208 C 740,205 830,194 918,168" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" fill="none" opacity="0.75"/>
+
+  <!-- cejas -->
+  <path d="M 390,242 C 420,218 476,214 506,230" stroke="#232347" stroke-width="22" stroke-linecap="round" fill="none"/>
+  <path d="M 664,208 C 700,182 766,184 800,212" stroke="#232347" stroke-width="24" stroke-linecap="round" fill="none"/>
+
+  <!-- ojos con profundidad -->
+  <g transform="rotate(-5 455 332)">
+    <ellipse cx="455" cy="332" rx="50" ry="64" fill="#FFFFFF" stroke="#232347" stroke-width="13"/>
+  </g>
+  <ellipse cx="469" cy="346" rx="26" ry="34" fill="#232347"/>
+  <circle cx="458" cy="329" r="10" fill="#FFFFFF"/>
+  <circle cx="478" cy="360" r="4.5" fill="#FFFFFF" opacity="0.85"/>
+  <g transform="rotate(4 735 322)">
+    <ellipse cx="735" cy="322" rx="59" ry="75" fill="#FFFFFF" stroke="#232347" stroke-width="14"/>
+  </g>
+  <ellipse cx="716" cy="338" rx="30" ry="40" fill="#232347"/>
+  <circle cx="703" cy="318" r="11.5" fill="#FFFFFF"/>
+  <circle cx="727" cy="355" r="5" fill="#FFFFFF" opacity="0.85"/>
+
+  <!-- mejillas -->
+  <path d="M 378,412 C 388,423 403,427 416,422" stroke="#3E9149" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M 822,400 C 812,411 797,415 784,410" stroke="#3E9149" stroke-width="10" stroke-linecap="round" fill="none"/>
+
+  <!-- boca estilo original -->
+  <path d="M 480,420 C 520,472 680,464 706,402 C 724,480 650,534 585,530 C 520,526 466,478 480,420 Z" fill="#232347"/>
+  <path d="M 494,430 C 535,462 655,454 692,412 L 681,444 C 640,472 540,472 508,450 Z" fill="#FFFFFF"/>
+  <path d="M 545,506 C 560,530 646,524 658,498 C 640,477 560,480 545,506 Z" fill="#C94F4F"/>
+  <path d="M 472,414 C 464,410 458,402 456,394" stroke="#232347" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <path d="M 712,396 C 720,391 725,383 727,374" stroke="#232347" stroke-width="12" stroke-linecap="round" fill="none"/>
+</g>
+
+<!-- grieta blanca -->
+<path d="M 600,168 L 578,250 L 622,335 L 570,425 L 615,505 L 590,606" stroke="#FFFFFF" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+<!-- guante amor y paz -->
+<g>
+  <path d="M 122,190 C 112,172 104,146 102,122 C 101,106 108,95 120,94 C 132,93 140,102 141,118 C 142,140 138,168 134,188 Z" fill="#FFFFFF" stroke="#232347" stroke-width="11" stroke-linejoin="round"/>
+  <path d="M 146,186 C 144,162 145,134 150,110 C 153,92 164,84 176,89 C 186,93 190,104 188,120 C 184,146 174,172 166,190 Z" fill="#FFFFFF" stroke="#232347" stroke-width="11" stroke-linejoin="round"/>
+  <path d="M 122,182 C 100,182 88,198 90,220 C 91,236 98,248 110,256 C 106,268 116,278 129,276 C 135,287 149,289 157,280 C 167,289 183,285 187,272 C 199,264 203,248 201,230 C 199,206 186,190 166,184 C 152,180 136,181 122,182 Z" fill="#FFFFFF" stroke="#232347" stroke-width="13" stroke-linejoin="round"/>
+  <path d="M 132,274 C 133,266 136,260 141,256" stroke="#232347" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M 160,278 C 160,270 162,263 166,258" stroke="#232347" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M 168,192 C 184,202 190,220 184,238" stroke="#232347" stroke-width="9" stroke-linecap="round" fill="none"/>
+</g>
+
+<!-- telefono agarrado por detras, dedos por delante -->
+<g transform="rotate(-8 1096 295)">
+  <rect x="1046" y="200" width="100" height="190" rx="22" fill="#2E2E44" stroke="#232347" stroke-width="12"/>
+  <rect x="1060" y="216" width="72" height="146" rx="12" fill="#44445F"/>
+  <path d="M 1124,232 L 1124,270" stroke="#5E5E80" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="1096" cy="376" r="7" fill="#6A6A8A"/>
+  <rect x="1128" y="226" width="30" height="38" rx="15" fill="#FFFFFF" stroke="#232347" stroke-width="9"/>
+  <rect x="1130" y="268" width="32" height="38" rx="15" fill="#FFFFFF" stroke="#232347" stroke-width="9"/>
+  <rect x="1130" y="310" width="32" height="38" rx="15" fill="#FFFFFF" stroke="#232347" stroke-width="9"/>
+  <rect x="1128" y="350" width="30" height="36" rx="15" fill="#FFFFFF" stroke="#232347" stroke-width="9"/>
+  <g transform="rotate(24 1052 322)">
+    <rect x="1022" y="298" width="34" height="62" rx="17" fill="#FFFFFF" stroke="#232347" stroke-width="10"/>
+  </g>
+</g>
+
+<!-- destellos -->
+<g stroke="#3DA35D" stroke-width="16" stroke-linecap="round">
+  <path d="M 1078,140 L 1062,102"/>
+  <path d="M 1112,128 L 1112,82"/>
+  <path d="M 1146,140 L 1164,104"/>
+</g>
+</svg>
