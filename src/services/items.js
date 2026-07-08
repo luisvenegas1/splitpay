@@ -47,8 +47,9 @@ export async function upsertParticipantsAndSplits(eventId, participants) {
         name: p.name,
         email: p.email || null,
         phone: p.phone || null,
-        amount_owed: p.amount_owed ?? 0,
-        payment_status: 'pending',
+        amount_owed: p.is_payer ? 0 : (p.amount_owed ?? 0),
+        payment_status: p.is_payer ? 'paid' : 'pending',
+        is_payer: p.is_payer ?? false,
         payment_token: p.payment_token,
       }))
     )

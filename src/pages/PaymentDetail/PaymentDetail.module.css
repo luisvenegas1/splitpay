@@ -3,6 +3,45 @@
   padding-bottom: var(--space-20);
 }
 
+/* Payer card */
+.payerCard {
+  margin-bottom: var(--space-8);
+  background: #fffbeb;
+  border: 1px solid #fbbf24;
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.payerCardIcon { font-size: 2.5rem; }
+
+.payerCardTitle {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: #92400e;
+}
+
+.payerCardDesc {
+  font-size: var(--text-sm);
+  color: #78350f;
+  line-height: var(--leading-normal);
+  max-width: 360px;
+}
+
+.payerCardLink {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-accent);
+  text-decoration: none;
+  margin-top: var(--space-1);
+}
+
+.payerCardLink:hover { text-decoration: underline; }
+
 /* Breadcrumb */
 .breadcrumb {
   display: flex;

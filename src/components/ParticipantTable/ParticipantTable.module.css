@@ -94,6 +94,21 @@
   border-radius: var(--radius-lg);
 }
 
+.rowPayer {
+  background: #fffbeb;
+}
+
+.payerTag {
+  font-size: var(--text-xs);
+  color: #92400e;
+  font-weight: var(--font-medium);
+  margin-left: var(--space-2);
+}
+
+.payerAmount {
+  color: var(--color-text-tertiary);
+}
+
 @media (max-width: 640px) {
   .wrapper {
     overflow: visible;

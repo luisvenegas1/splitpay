@@ -190,6 +190,7 @@ export default function PaymentDetail() {
   }
 
   const ev            = participant.events
+  const isPayer       = participant.is_payer === true
   const status        = statusConfig[participant.payment_status] ?? statusConfig.pending
   const isPaid              = participant.payment_status === 'paid'
   const isPendingApproval   = participant.payment_status === 'pending_approval'
@@ -223,6 +224,21 @@ export default function PaymentDetail() {
             {ev?.date && <p className={styles.eventDate}>{formatDate(ev.date)}</p>}
           </div>
         </div>
+
+        {/* Pagador: vista especial */}
+        {isPayer && (
+          <div className={styles.payerCard}>
+            <div className={styles.payerCardIcon}>💰</div>
+            <h2 className={styles.payerCardTitle}>Vos pusiste la plata</h2>
+            <p className={styles.payerCardDesc}>
+              Sos quien pagó la cuenta de <strong>{ev?.name}</strong>.
+              A vos te van a pagar los demás participantes.
+            </p>
+            <Link to={`/evento/${ev?.slug}`} className={styles.payerCardLink}>
+              Ver estado del evento →
+            </Link>
+          </div>
+        )}
 
         <div className={styles.grid}>
           <div className={styles.main}>

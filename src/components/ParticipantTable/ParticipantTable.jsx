@@ -35,6 +35,25 @@ export default function ParticipantTable({ participants = [], showLink = true })
           <tbody>
             {participants.map((p) => {
               const status = statusConfig[p.payment_status] ?? statusConfig.pending
+              if (p.is_payer) {
+                return (
+                  <tr key={p.id} className={`${styles.row} ${styles.rowPayer}`}>
+                    <td className={styles.name}>
+                      {p.name} <span className={styles.payerTag}>💰 Puso la plata</span>
+                    </td>
+                    <td className={`${styles.amount} ${styles.right} ${styles.payerAmount}`}>—</td>
+                    <td><Badge variant="success">Pagó</Badge></td>
+                    <td className={`${styles.secondary} ${styles.colDate}`}>—</td>
+                    <td className={`${styles.secondary} ${styles.colMethod}`}>—</td>
+                    {showLink && (
+                      <td>
+                        <Link to={`/pago/${p.payment_token}`} className={styles.link}>Ver →</Link>
+                      </td>
+                    )}
+                  </tr>
+                )
+              }
+
               return (
                 <tr key={p.id} className={styles.row}>
                   <td className={styles.name}>{p.name}</td>

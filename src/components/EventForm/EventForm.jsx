@@ -4,8 +4,8 @@ import { useAuth } from '@/context/AuthContext'
 import { createEvent, updateEvent } from '@/services/events'
 import { upsertItems, upsertParticipantsAndSplits, insertItemSplits } from '@/services/items'
 import { uploadInvoice } from '@/services/invoices'
-import { getAllUsers } from '@/services/profiles'
 import { slugify, generatePaymentToken } from '@/utils/format'
+import { parseInvoice } from '@/services/parseInvoice'
 import styles from './EventForm.module.css'
 
 function emptyItem() {
@@ -20,17 +20,8 @@ export default function EventForm({ event, onSuccess, onCancel }) {
   const isEditing = Boolean(event)
   const { user } = useAuth()
 
-  const [allUsers, setAllUsers]   = useState([])
-  const [ownerId, setOwnerId]     = useState(event?.owner_id ?? user?.id ?? '')
-
-  useEffect(() => {
-    getAllUsers().then(setAllUsers).catch(() => {})
-  }, [])
-
-  // Si el usuario actual aún no está en allUsers (perfil muy reciente), lo completamos
-  useEffect(() => {
-    if (!ownerId && user?.id) setOwnerId(user.id)
-  }, [user])
+  // El dueño del evento siempre es quien lo crea/edita
+  const ownerId = event?.owner_id ?? user?.id ?? null
 
   const [name, setName] = useState(event?.name ?? '')
   const [date, setDate] = useState(event?.date ?? '')
@@ -62,10 +53,49 @@ export default function EventForm({ event, onSuccess, onCancel }) {
   )
 
   // splits[itemIdx][participantIdx] = qty
+  const [payerIdx, setPayerIdx] = useState(-1)
   const [splits, setSplits] = useState({})
   const [invoiceFile, setInvoiceFile] = useState(null)
+  const [parsing, setParsing] = useState(false)
+  const [parseResult, setParseResult] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+
+  async function handleParseInvoice() {
+    if (!invoiceFile) return
+    setParsing(true)
+    setError('')
+    try {
+      const result = await parseInvoice(invoiceFile)
+      setParseResult(result)
+
+      // Auto-fill tax rates
+      if (result.iv_rate) setIvRate(String(result.iv_rate))
+      if (result.service_rate !== undefined) setServiceTax(String(result.service_rate))
+
+      // Auto-fill items
+      if (result.items?.length) {
+        const newItems = result.items.map((item) => {
+          const qty = parseFloat(item.quantity) || 1
+          const unitPrice = parseFloat(item.unit_price) || 0
+          const pretax = qty * unitPrice
+          return {
+            description: item.description,
+            quantity: String(qty),
+            unit_price: unitPrice.toFixed(2),
+            total_pretax: pretax.toFixed(2),
+            price_with_iv: '', // se recalcula con el useEffect de taxFactor
+          }
+        })
+        setItems(newItems)
+        setSplits({})
+      }
+    } catch (err) {
+      setError('No se pudo leer la factura: ' + (err.message ?? 'Error desconocido'))
+    } finally {
+      setParsing(false)
+    }
+  }
 
   const taxFactor = 1 + (parseFloat(ivRate) || 0) / 100 + (parseFloat(serviceTax) || 0) / 100
 
@@ -245,11 +275,12 @@ export default function EventForm({ event, onSuccess, onCancel }) {
       }
 
       // Guardar participantes con amount_owed calculado
-      const participantsToSave = validPartIndices.map(({ p, j }) => ({
+      const participantsToSave = validPartIndices.map(({ p, j }, savedIdx) => ({
         name: p.name.trim(),
         email: p.email || null,
         phone: p.phone || null,
         amount_owed: participantTotal(j),
+        is_payer: payerIdx >= 0 && validPartIndices[savedIdx].j === payerIdx,
         payment_token: generatePaymentToken(),
       }))
 
@@ -351,31 +382,52 @@ export default function EventForm({ event, onSuccess, onCancel }) {
           </div>
         </div>
         <div className={styles.field}>
-          <label className={styles.label}>¿Quién pagó? (Admin del evento)</label>
-          <select
-            className={styles.input}
-            value={ownerId}
-            onChange={(e) => setOwnerId(e.target.value)}
-          >
-            {user && !allUsers.find((u) => u.id === user.id) && (
-              <option value={user.id}>Yo</option>
+          <label className={styles.label}>Factura (imagen)</label>
+          <div className={styles.invoiceRow}>
+            {/* Elegir archivo existente */}
+            <label className={styles.fileBtn}>
+              📁 Elegir archivo
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: 'none' }}
+                onChange={(e) => { setInvoiceFile(e.target.files[0] ?? null); setParseResult(null) }}
+              />
+            </label>
+            {/* Tomar foto con cámara (Continuity Camera en Mac, cámara directa en móvil) */}
+            <label className={styles.fileBtn}>
+              📷 Tomar foto
+              <input
+                type="file"
+                accept="image/*"
+                capture="environment"
+                style={{ display: 'none' }}
+                onChange={(e) => { setInvoiceFile(e.target.files[0] ?? null); setParseResult(null) }}
+              />
+            </label>
+            {invoiceFile && (
+              <span className={styles.fileName}>✓ {invoiceFile.name}</span>
             )}
-            {allUsers.map((u) => (
-              <option key={u.id} value={u.id}>
-                {u.name || u.id}{u.id === user?.id ? ' (yo)' : ''}
-              </option>
-            ))}
-            {!ownerId && <option value="">— Seleccionar —</option>}
-          </select>
-        </div>
-
-        <div className={styles.field}>
-          <label className={styles.label}>Factura (imagen o PDF)</label>
-          <input
-            type="file" className={styles.fileInput}
-            accept="image/*,.pdf"
-            onChange={(e) => setInvoiceFile(e.target.files[0] ?? null)}
-          />
+            {invoiceFile && (
+              <button
+                type="button"
+                className={styles.parseBtn}
+                onClick={handleParseInvoice}
+                disabled={parsing}
+              >
+                {parsing ? '⏳ Leyendo...' : '🤖 Leer factura'}
+              </button>
+            )}
+          </div>
+          {parseResult && (
+            <div className={styles.parseResult}>
+              <span>✅ {parseResult.establishment_type === 'restaurant' ? 'Restaurante' : 'Establecimiento'} detectado
+                · IV {parseResult.iv_rate}%{parseResult.service_rate > 0 ? ` + Servicio ${parseResult.service_rate}%` : ''}
+                · Total en factura: ₡{Number(parseResult.total_detected).toLocaleString('es-CR')}
+              </span>
+              {parseResult.notes && <span className={styles.parseNotes}>⚠ {parseResult.notes}</span>}
+            </div>
+          )}
         </div>
       </section>
 
@@ -387,8 +439,15 @@ export default function EventForm({ event, onSuccess, onCancel }) {
             + Agregar
           </button>
         </div>
+        <p className={styles.payerHint}>💰 Marcá quién puso la plata — esa persona no paga, a ella le pagan.</p>
         {participants.map((p, i) => (
-          <div key={i} className={styles.participantRow}>
+          <div key={i} className={`${styles.participantRow} ${payerIdx === i ? styles.participantPayer : ''}`}>
+            <button
+              type="button"
+              className={`${styles.payerBtn} ${payerIdx === i ? styles.payerBtnActive : ''}`}
+              onClick={() => setPayerIdx(payerIdx === i ? -1 : i)}
+              title={payerIdx === i ? 'Quitar como pagador' : 'Marcar como quien puso la plata'}
+            >💰</button>
             <input
               className={styles.input}
               value={p.name}
@@ -536,8 +595,8 @@ export default function EventForm({ event, onSuccess, onCancel }) {
               <tr className={styles.totalsRow}>
                 <td className={styles.totalsLabel}>Total a pagar</td>
                 {participants.map((_, j) => (
-                  <td key={j} className={styles.totalsCell}>
-                    ₡{fmt(participantTotal(j))}
+                  <td key={j} className={`${styles.totalsCell} ${payerIdx === j ? styles.totalsCellPayer : ''}`}>
+                    {payerIdx === j ? '💰 Puso la plata' : `₡${fmt(participantTotal(j))}`}
                   </td>
                 ))}
                 <td />

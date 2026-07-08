@@ -89,10 +89,83 @@
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
+.invoiceRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.parseBtn {
+  height: 36px;
+  padding: 0 var(--space-4);
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.parseBtn:hover:not(:disabled) { background: var(--color-accent-hover); }
+.parseBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.parseResult {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-success);
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+}
+
+.parseNotes {
+  color: #92400e;
+}
+
 .fileInput {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
   padding-top: 8px;
+}
+
+.fileBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  height: 36px;
+  padding: 0 var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.fileBtn:hover {
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.fileName {
+  font-size: var(--text-xs);
+  color: var(--color-success);
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Items */
@@ -257,9 +330,50 @@
   grid-template-columns: 2fr 0.7fr 1fr 1fr 1fr 32px !important;
 }
 
-/* ── Participants (3 cols, no amount) ── */
+/* ── Participants (💰 btn + 3 cols + remove) ── */
 .participantRow {
-  grid-template-columns: 1.5fr 1.5fr 1fr 32px !important;
+  grid-template-columns: 32px 1.5fr 1.5fr 1fr 32px !important;
+}
+
+.participantPayer {
+  background: #fffbeb;
+  border-radius: var(--radius-md);
+  padding: var(--space-2);
+  margin: 0 calc(-1 * var(--space-2));
+}
+
+.payerHint {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}
+
+.payerBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+  cursor: pointer;
+  font-size: var(--text-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.4;
+  transition: opacity var(--transition-fast), background var(--transition-fast);
+}
+
+.payerBtn:hover { opacity: 0.8; }
+
+.payerBtnActive {
+  opacity: 1;
+  background: #fef9c3;
+  border-color: #fbbf24;
+}
+
+.totalsCellPayer {
+  font-size: var(--text-xs);
+  color: #92400e;
+  font-weight: var(--font-semibold);
 }
 
 /* ── Assignment matrix ── */

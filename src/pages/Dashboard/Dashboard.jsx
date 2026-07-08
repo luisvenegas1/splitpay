@@ -89,26 +89,28 @@ export default function Dashboard() {
   }
 
   async function loadStats() {
+    // Solo eventos activos para stats relevantes
     const { data: parts } = await supabase
       .from('participants')
-      .select('amount_owed, amount_paid, payment_status, events!inner(owner_id)')
+      .select('amount_owed, amount_paid, payment_status, events!inner(owner_id, status)')
       .eq('events.owner_id', user.id)
-
-    if (!parts) return
-    let totalLent = 0, totalCollected = 0, totalPending = 0
-    parts.forEach((p) => {
-      totalLent      += parseFloat(p.amount_owed) || 0
-      totalCollected += parseFloat(p.amount_paid) || 0
-      totalPending   += Math.max((parseFloat(p.amount_owed) || 0) - (parseFloat(p.amount_paid) || 0), 0)
-    })
+      .eq('events.status', 'active')
 
     const { data: evs } = await supabase
       .from('events')
       .select('id, status')
       .eq('owner_id', user.id)
 
+    if (!parts) return
+    let totalActive = 0, totalCollected = 0, totalPending = 0
+    parts.forEach((p) => {
+      totalActive    += parseFloat(p.amount_owed) || 0
+      totalCollected += parseFloat(p.amount_paid) || 0
+      totalPending   += Math.max((parseFloat(p.amount_owed) || 0) - (parseFloat(p.amount_paid) || 0), 0)
+    })
+
     setStats({
-      totalLent,
+      totalActive,
       totalCollected,
       totalPending,
       activeEvents: (evs ?? []).filter((e) => e.status === 'active').length,
@@ -183,11 +185,11 @@ export default function Dashboard() {
         {/* Stats */}
         {stats && (
           <div className={styles.statsGrid}>
-            <StatCard label="Total adelantado"   value={formatCRC(stats.totalLent)}      color="neutral" />
-            <StatCard label="Pendiente de cobro" value={formatCRC(stats.totalPending)}   color="warning" />
-            <StatCard label="Ya cobrado"          value={formatCRC(stats.totalCollected)} color="success" />
-            <StatCard label="Eventos activos"     value={stats.activeEvents} sub={`${stats.closedEvents} cerrados`} />
-            <StatCard label="Participantes"       value={stats.totalParticipants} />
+            <StatCard label="Por cobrar"      value={formatCRC(stats.totalPending)}   color="warning" sub="Eventos activos" />
+            <StatCard label="Ya cobrado"      value={formatCRC(stats.totalCollected)} color="success" sub="Eventos activos" />
+            <StatCard label="Total en juego"  value={formatCRC(stats.totalActive)}    color="neutral" sub="Eventos activos" />
+            <StatCard label="Eventos activos" value={stats.activeEvents} sub={`${stats.closedEvents} cerrados`} />
+            <StatCard label="Participantes"   value={stats.totalParticipants} sub="En eventos activos" />
           </div>
         )}
 
